@@ -1,5 +1,5 @@
 # Road-Semantic-Segmentation-Using-DCGAN
-In this project I have implemented road semantic segmentation using DCGAn 
+In this project I have implemented road semantic segmentation using DCGAn on Massachuset road image dataset 
 ## Detailed Architecture
 <img width="641" alt="Detailed_ Architecture" src="https://user-images.githubusercontent.com/97391448/187149745-268261ae-0b2d-4458-9c54-c01695eaab2c.PNG">
 
