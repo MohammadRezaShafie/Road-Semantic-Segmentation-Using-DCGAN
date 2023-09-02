@@ -1,0 +1,35 @@
+from ahrs.filters import EKF
+from scipy.spatial.transform import Rotation
+
+# Create AHRS EKF filter object
+ahrs_filter = EKF()
+
+for i in range(300):
+  accel_data = []
+  mag_data = []
+  gyro_data = []
+  accel_data.append(df.loc[i, 'Accelerometer_X'])
+  accel_data.append(df.loc[i, 'Accelerometer_Y'])
+  accel_data.append(df.loc[i, 'Accelerometer_Z'])
+  mag_data.append(df.loc[i, 'Magnetometer_X'])
+  mag_data.append(df.loc[i, 'Magnetometer_Y'])
+  mag_data.append(df.loc[i, 'Magnetometer_Z'])
+  gyro_data.append(df.loc[i, 'Gyro_X'])
+  gyro_data.append(df.loc[i, 'Gyro_Y'])
+  gyro_data.append(df.loc[i, 'Gyro_Z'])
+  gyro_quat = [1.0, 0.0, 0.0, 0.0]  # Identity quaternion
+  gyro_quat[1:] = gyro_data  # Set the x, y, z components of the quaternion
+  gyro_norm = np.linalg.norm(gyro_quat)
+  gyro_quat = np.array(gyro_quat) / gyro_norm
+# Update AHRS filter
+  q = ahrs_filter.update(gyro_quat, accel_data, mag_data)
+  roll  = math.atan(2*(q[1]*q[0] - 2*q[2]*q[3])/ (q[0]*q[0]-q[1]*q[1] +q[2]*q[2]- q[3]*q[3]))
+  pitch = math.atan(2*(q[0]*q[2] - 2*q[1]*q[3])/(q[0]*q[0]+q[1]*q[1] - q[2]*q[2] - q[3]*q[3]))
+  yaw   =  math.asin(-2*q[1]*q[2] + 2*q[0]*q[3])
+  if yaw<0:
+    yaw += 360
+  if roll<0:
+    roll += 360
+  if pitch<0:
+    pitch +=360
+  print("pitch roll and yaw : ",pitch , roll , yaw)
