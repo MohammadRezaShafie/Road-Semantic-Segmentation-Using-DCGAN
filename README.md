@@ -1,5 +1,5 @@
 # Road-Semantic-Segmentation-Using-DCGAN
-## Implementation of Road-Semantic-Segmentation-Using-DCGAN ([https://ieeexplore.ieee.org/document/9197597](https://ieeexplore.ieee.org/document/9416669)) on Massachuset dataset using Pytorch
+## Implementation of Road-Semantic-Segmentation-Using-DCGAN ([https://ieeexplore.ieee.org/document/9197597](https://ieeexplore.ieee.org/document/9416669)) on Massachuset dataset MassGIS using Pytorch
 
 In this work, I have used the Massachusetts dataset to train a convolutional generative neural network for implementing road semantic segmentation, a technique for specifying roads in images and producing maps. 
 
